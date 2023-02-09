@@ -2,20 +2,25 @@
   description = "ESP8266/ESP32 development tools";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url="nixpkgs/22.11";
+    # nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "nixpkgs/22.11";
+    # nixpkgs-stable.url="nixpkgs/22.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs,nixpkgs-stable, flake-utils }: {
+  outputs = { self, nixpkgs,
+  # nixpkgs-stable,
+   flake-utils }: {
     overlay = import ./overlay.nix;
   } // flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
     let
-      stable=import nixpkgs-stable;
-      pkgs = import nixpkgs { inherit system; overlays = [ self.overlay (self: super: { 
-        python39Packages.bitstring = stable.python39Packages.bitstring;
-        python310Packages.bitstring = stable.python310Packages.bitstring;
-       }) ]; };
+      # stable=import nixpkgs-stable;
+      pkgs = import nixpkgs { inherit system; overlays = [ self.overlay 
+      # (self: super: { 
+      #   python39Packages.bitstring = stable.python39Packages.bitstring;
+      #   python310Packages.bitstring = stable.python310Packages.bitstring;
+      #  })
+        ]; };
     in
     {
       packages = {
