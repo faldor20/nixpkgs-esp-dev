@@ -1,15 +1,17 @@
 # When updating to a newer version, check if the version of `esp32*-toolchain-bin.nix` also needs to be updated.
 { rev ? "v4.4.4"
-, sha256 ? "sha256-F5y61Xl5CtNeD0FKGNkAF8DxWMOXAiQRqOmGfbIXTxU="
+, sha256 ? "0jzd23582ph4zp34bc791qs2ydl0q4lpw2l8ngs6r29k9vnwqmp8"
 , stdenv
 , lib
 , fetchFromGitHub
-, mach-nix, fetchZip
+, mach-nix, fetchzip
 }:
 
 let
-  src = fetchZip {
+
+  src = fetchzip {
     url= "https://dl.espressif.com/github_assets/espressif/esp-idf/releases/download/${rev}/esp-idf-${rev}.zip";
+    hash=sha256;
   };
 
   pythonEnv =
@@ -32,7 +34,7 @@ stdenv.mkDerivation rec {
   pname = "esp-idf";
   version = rev;
 
-  inherit src;
+inherit src;
 
   # This is so that downstream derivations will have IDF_PATH set.
   setupHook = ./setup-hook.sh;
