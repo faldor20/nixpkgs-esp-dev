@@ -21,9 +21,8 @@ let
       # - Comment out ARMv7-specific "--only-binary" line.
       requirementsOriginalText = builtins.readFile "${src}/requirements.txt";
       requirementsText = builtins.replaceStrings
-        [ "file://" "--only-binary" ]
-        [ "#file://" "#--only-binary" ]
-        [ "bitstring>=3.1.6,<4" "bitstring==3.1.9"]
+        [ "file://" "--only-binary" "bitstring>=3.1.6,<4" ]
+        [ "#file://" "#--only-binary" "bitstring==3.1.9" ]
         requirementsOriginalText;
     in
     mach-nix.mkPython
