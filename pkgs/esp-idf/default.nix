@@ -4,7 +4,8 @@
 , stdenv
 , lib
 , fetchFromGitHub
-, mach-nix, fetchzip
+, mach-nix,
+ fetchzip
 }:
 
 let

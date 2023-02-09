@@ -1,12 +1,5 @@
+{mach-nix}:
 final: prev:
-let
-  # mach-nix is used to set up the ESP-IDF Python environment.
-  mach-nix = import (builtins.fetchGit {
-    url = "https://github.com/DavHau/mach-nix";
-    ref = "refs/tags/3.5.0";
-    sha256= "";
-  }) {};
-in
 {
   # ESP32C3
   gcc-riscv32-esp32c3-elf-bin = prev.callPackage ./pkgs/esp32c3-toolchain-bin.nix { };
