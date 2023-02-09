@@ -1,5 +1,5 @@
 # When updating to a newer version, check if the version of `esp32*-toolchain-bin.nix` also needs to be updated.
-{ rev ? "v4.4.3"
+{ rev ? "v4.4.4"
 , sha256 ? "sha256-F5y61Xl5CtNeD0FKGNkAF8DxWMOXAiQRqOmGfbIXTxU="
 , stdenv
 , lib
