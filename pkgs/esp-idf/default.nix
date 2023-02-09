@@ -4,18 +4,12 @@
 , stdenv
 , lib
 , fetchFromGitHub
-, mach-nix
+, mach-nix, fetchZip
 }:
 
 let
-  src = fetchFromGitHub {
-    owner = "espressif";
-    repo = "esp-idf";
-    rev = rev;
-    sha256 = sha256;
-    fetchSubmodules = true;
-    #leaveDotGit=true;
-    deepClone=true;
+  src = fetchZip {
+    url= "https://dl.espressif.com/github_assets/espressif/esp-idf/releases/download/${rev}/esp-idf-${rev}.zip";
   };
 
   pythonEnv =
