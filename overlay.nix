@@ -1,18 +1,10 @@
 final: prev:
 let
   # mach-nix is used to set up the ESP-IDF Python environment.
-  mach-nix-src = prev.fetchFromGitHub {
-    owner = "DavHau";
-    repo = "mach-nix";
-    rev = "98d001727542bb6142d0ab554fc30bd591b07c73";
-    hash = "sha256-SXrwF/KPz8McBN8kN+HTfGphE1hiRSr1mtXSVjPJr8o=";
-  };
-
-  mach-nix = import mach-nix-src {
-    pypiDataRev = "1d17587404960e2e9fd0fd7e514b0bbc52abcdfd";
-    pypiDataSha256 = "sha256:078i0af4s1la5cafq958wfk8as711qlf81ngrg0xq0wys7ainig1";
-    pkgs = final;
-  };
+  mach-nix = import (builtins.fetchGit {
+    url = "https://github.com/DavHau/mach-nix";
+    ref = "refs/tags/3.5.0";
+  }) {};
 in
 {
   # ESP32C3
