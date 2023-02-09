@@ -15,7 +15,7 @@ let
     sha256 = sha256;
     fetchSubmodules = true;
     #leaveDotGit=true;
-    #deepClone=true;
+    deepClone=true;
   };
 
   pythonEnv =
