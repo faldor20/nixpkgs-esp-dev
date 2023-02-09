@@ -7,11 +7,11 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }: {
+  outputs = { self, nixpkgs,nixpkgs-stable, flake-utils }: {
     overlay = import ./overlay.nix;
   } // flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
     let
-      stable=import nixpkgs;
+      stable=import nixpkgs-stable;
       pkgs = import nixpkgs { inherit system; overlays = [ self.overlay (self: super: { python39Packages.bitstring = stable.python39Packages.bitstring; }) ]; };
     in
     {
