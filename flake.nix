@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url="nixpkgs/nixpkgs-22.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -10,7 +11,8 @@
     overlay = import ./overlay.nix;
   } // flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
     let
-      pkgs = import nixpkgs { inherit system; overlays = [ self.overlay ]; };
+      stable=import nixpkgs;
+      pkgs = import nixpkgs { inherit system; overlays = [ self.overlay (self: super: { python39Packages.bitstring = stable.python39Packages.bitstring; }) ]; };
     in
     {
       packages = {
