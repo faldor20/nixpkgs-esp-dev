@@ -46,7 +46,7 @@ inherit src;
 
   installPhase = ''
     mkdir -p $out
-    cp -r $src/* $out/
+    cp -r $src/. $out/
 
     # Link the Python environment in so that in shell derivations, the Python
     # setup hook will add the site-packages directory to PYTHONPATH.
