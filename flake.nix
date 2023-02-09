@@ -12,7 +12,10 @@
   } // flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
     let
       stable=import nixpkgs-stable;
-      pkgs = import nixpkgs { inherit system; overlays = [ self.overlay (self: super: { python39Packages.bitstring = stable.python39Packages.bitstring; }) ]; };
+      pkgs = import nixpkgs { inherit system; overlays = [ self.overlay (self: super: { 
+        python39Packages.bitstring = stable.python39Packages.bitstring;
+        python310Packages.bitstring = stable.python310Packages.bitstring;
+       }) ]; };
     in
     {
       packages = {
