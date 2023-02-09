@@ -23,7 +23,7 @@ let
       requirementsText = builtins.replaceStrings
         [ "file://" "--only-binary" ]
         [ "#file://" "#--only-binary" ]
-        ["bitstring>=3.1.6,<4" "bitstring==3.1.9"]
+        [ "bitstring>=3.1.6,<4" "bitstring==3.1.9"]
         requirementsOriginalText;
     in
     mach-nix.mkPython
