@@ -11,8 +11,9 @@
 
   outputs = { self, nixpkgs,mach-nix, 
    # nixpkgs-stable,
-   flake-utils }: {
-    overlay = import ./overlay.nix{inherit mach-nix;};
+   flake-utils }: 
+  {
+    overlay = import ./overlay.nix{mach-nix= mach-nix.lib."x86_64-linux";};
   } // flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
     let
       # stable=import nixpkgs-stable;
