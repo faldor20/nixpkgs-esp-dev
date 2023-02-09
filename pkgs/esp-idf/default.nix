@@ -1,6 +1,6 @@
 # When updating to a newer version, check if the version of `esp32*-toolchain-bin.nix` also needs to be updated.
 { rev ? "v4.4.4"
-, sha256 ? "sha256-0jzd23582ph4zp34bc791qs2ydl0q4lpw2l8ngs6r29k9vnwqmp8="
+, sha256 ? "sha256-0jzd23582ph4zp34bc791qs2ydl0q4lpw2l8ngs6r29k9vnwqmp8"
 , stdenv
 , lib
 , fetchFromGitHub
